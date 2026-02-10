@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 93%;
+
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 93%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 93%;
+
+    --primary: 168 76% 42%;
+    --primary-foreground: 222 47% 7%;
+
+    --secondary: 222 30% 16%;
+    --secondary-foreground: 210 40% 85%;
+
+    --muted: 222 30% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 168 76% 42%;
+    --accent-foreground: 222 47% 7%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 168 76% 42%;
+
+    --radius: 0.75rem;
+
+    /* AQI Color Scale */
+    --aqi-good: 142 71% 45%;
+    --aqi-moderate: 45 93% 47%;
+    --aqi-unhealthy-sensitive: 25 95% 53%;
+    --aqi-unhealthy: 0 72% 51%;
+    --aqi-very-unhealthy: 282 68% 38%;
+    --aqi-hazardous: 345 100% 27%;
+
+    /* Glass effect */
+    --glass-bg: 222 47% 11% / 0.6;
+    --glass-border: 222 30% 25% / 0.3;
+
+    /* Chart colors */
+    --chart-1: 168 76% 42%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 45 93% 47%;
+    --chart-4: 282 68% 48%;
+    --chart-5: 0 72% 51%;
+
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 85%;
+    --sidebar-primary: 168 76% 42%;
+    --sidebar-primary-foreground: 222 47% 7%;
+    --sidebar-accent: 222 30% 16%;
+    --sidebar-accent-foreground: 210 40% 85%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 168 76% 42%;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222 47% 7%;
+
+      --card: 0 0% 97%;
+      --card-foreground: 222 47% 7%;
+
+      --popover: 0 0% 97%;
+      --popover-foreground: 222 47% 7%;
+
+      --primary: 168 76% 42%;
+      --primary-foreground: 0 0% 100%;
+
+      --secondary: 222 30% 93%;
+      --secondary-foreground: 222 47% 7%;
+
+      --muted: 222 30% 88%;
+      --muted-foreground: 215 20% 40%;
+
+      --accent: 168 76% 42%;
+      --accent-foreground: 0 0% 100%;
+
+      --destructive: 0 72% 51%;
+      --destructive-foreground: 0 0% 100%;
+
+      --border: 222 30% 88%;
+      --input: 222 30% 93%;
+      --ring: 168 76% 42%;
+
+      /* Glass effect for light mode */
+      --glass-bg: 0 0% 100% / 0.6;
+      --glass-border: 222 30% 88% / 0.5;
+
+      --sidebar-background: 0 0% 98%;
+      --sidebar-foreground: 222 47% 7%;
+      --sidebar-primary: 168 76% 42%;
+      --sidebar-primary-foreground: 0 0% 100%;
+      --sidebar-accent: 222 30% 93%;
+      --sidebar-accent-foreground: 222 47% 7%;
+      --sidebar-border: 222 30% 88%;
+      --sidebar-ring: 168 76% 42%;
+    }
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.light {
+    color-scheme: light;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/30 rounded-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:bg-card/80 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5;
+  }
+
+  .aqi-good { color: hsl(var(--aqi-good)); }
+  .aqi-moderate { color: hsl(var(--aqi-moderate)); }
+  .aqi-unhealthy-sensitive { color: hsl(var(--aqi-unhealthy-sensitive)); }
+  .aqi-unhealthy { color: hsl(var(--aqi-unhealthy)); }
+  .aqi-very-unhealthy { color: hsl(var(--aqi-very-unhealthy)); }
+  .aqi-hazardous { color: hsl(var(--aqi-hazardous)); }
+
+  .bg-aqi-good { background-color: hsl(var(--aqi-good)); }
+  .bg-aqi-moderate { background-color: hsl(var(--aqi-moderate)); }
+  .bg-aqi-unhealthy-sensitive { background-color: hsl(var(--aqi-unhealthy-sensitive)); }
+  .bg-aqi-unhealthy { background-color: hsl(var(--aqi-unhealthy)); }
+  .bg-aqi-very-unhealthy { background-color: hsl(var(--aqi-very-unhealthy)); }
+  .bg-aqi-hazardous { background-color: hsl(var(--aqi-hazardous)); }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-400;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.3);
+  }
+}
